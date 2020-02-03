@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Picker,
   CheckBox,
-  ScrollView
+  ScrollView,
+  Platform
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -107,6 +108,7 @@ class MonthlyReport extends React.Component {
           <View style={{ flexDirection: "row" }}>
             <View style={styles.myDrops}>
               <RNPickerSelect
+                 style={styles.pickerIos}
                 value={this.state.selectedyear}
                 onValueChange={(itemValue, itemIndex) => {
                   this.setState({ selectedyear: itemValue });
@@ -135,7 +137,7 @@ class MonthlyReport extends React.Component {
                     }
                   } else {
                     if (this.state.selectedMonth === "All") {
-                      var filter = this.state.transctions.filter(function(
+                      let filter = this.state.transctions.filter(function(
                         transc
                       ) {
                         return transc.soldDate.substring(0, 4) == itemValue;
@@ -143,8 +145,8 @@ class MonthlyReport extends React.Component {
 
                       this.setState({ filteredTransctions: filter });
                     } else {
-                      var that = this;
-                      var filter = this.state.transctions.filter(function(
+                      let that = this;
+                      let filter = this.state.transctions.filter(function(
                         transc
                       ) {
                         var monC = that.state.selectedMonthNo;
@@ -175,6 +177,7 @@ class MonthlyReport extends React.Component {
             </View>
             <View style={styles.myDrops}>
               <RNPickerSelect
+              style={styles.pickerIos}
                   value={this.state.selectedMonth}
                   onValueChange={(itemValue, itemIndex) => {
                     this.setState({
@@ -191,7 +194,7 @@ class MonthlyReport extends React.Component {
                         var filter = this.state.transctions.filter(function(
                           transc
                         ) {
-                          return transc.soldDate.substring(5, 7) == itemIndex;
+                          return transc.soldDate.substring(5, 7) == (itemIndex-1);
                         });
   
                         this.setState({ filteredTransctions: filter });
@@ -202,11 +205,11 @@ class MonthlyReport extends React.Component {
                           filteredTransctions: this.state.transctions
                         });
                       } else {
-                        var filter = this.state.transctions.filter(function(
+                        let filter = this.state.transctions.filter(function(
                           transc
                         ) {
                           return (
-                            transc.soldDate.substring(5, 7) == itemIndex &&
+                            transc.soldDate.substring(5, 7) == (itemIndex-1) &&
                             transc.soldDate.substring(0, 4) === sYear
                           );
                         });
@@ -310,13 +313,17 @@ const styles = StyleSheet.create({
     borderColor: "#3f3fb9",
     fontSize: 20,
     borderRadius: 5,
-    backgroundColor: "#F6F6F6"
+    backgroundColor: "#F6F6F6",
+     ...Platform.select({
+      ios: {
+       height: 50,
+       justifyContent:'center',
+       alignItems:'center',
+       paddingLeft:20,
+      },
+    }),
   },
-  myDrop: {
-    height: 40,
-    width: "100%",
-    color: "#3f3fb9"
-  },
+
   SectionStyle: {
     flexDirection: "row",
     justifyContent: "center",
@@ -337,29 +344,14 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width - 55,
     fontSize: 18
   },
-  head: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "gray"
+ 
+
+ 
+  cardHead1: {
+    flexDirection: "row",
+    justifyContent: "space-evenly"
   },
 
-  cardHead: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-evenly"
-  },
-  cardHead1: {
-    flexDirection: "row",
-    justifyContent: "space-evenly"
-  },
-  head1: {
-    color: "#3f3fb9",
-    alignSelf: "center",
-    fontSize: 19
-  },
-  cardHead1: {
-    flex: 1
-  },
   cardRow: {
     flexDirection: "row",
 
@@ -379,6 +371,14 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
 
     elevation: 5
+  },
+  pickerIos:{
+   ...Platform.select({
+      ios: {
+       height: 50,
+       padding:10,
+      },
+    }),
   }
 });
 

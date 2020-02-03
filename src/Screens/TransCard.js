@@ -46,32 +46,30 @@ export default class TransCard extends React.Component {
                 <CardItem style={styles.cardHead1} >
                     <View>
                         <Text style={styles.head}>Volume: </Text>
-                        <Text style={styles.head1}> {this.props.transc.volume} </Text>
+                        <Text style={styles.head1}> {Math.round(this.props.transc.volume) } </Text>
                     </View>
                     <View>
                         <Text style={styles.head}>Downpayment: </Text>
-                        <Text style={styles.head1}> {this.props.transc.downPayment} %</Text>
+                        <Text style={styles.head1}> {Math.round(this.props.transc.downPayment) } %</Text>
                     </View>
                     <View>
                         <Text style={styles.head}>Spiff: </Text>
-                        <Text style={styles.head1}> $ {this.props.transc.spiff} </Text>
+                        <Text style={styles.head1}> $ {Math.round(this.props.transc.spiff)} </Text>
                     </View>
                 </CardItem>
                 <CardItem style={styles.cardHead1} >
                     <View>
                         <Text style={styles.head}>Bonus: </Text>
-                        <Text style={styles.head1}>$ {this.props.transc.bonus} </Text>
+                        <Text style={styles.head1}>$ {Math.round(this.props.transc.bonus)} </Text>
                     </View>
                     <View>
                         <Text style={styles.head}>Commission: </Text>
-                        <Text style={styles.head1}>$ {this.props.transc.commission} </Text>
+                        <Text style={styles.head1}>$ {Math.round(this.props.transc.commission)} </Text>
                     </View>
-
-               
                 </CardItem>
                 <CardItem style={styles.cardHead} >
                 <Text style={styles.head}>Podium/Mentor/Deduction: </Text>
-                        <Text style={styles.head1}>$ {this.props.transc.pmdDeduction} </Text>
+                        <Text style={styles.head1}>$ {Math.round(this.props.transc.pmdDeduction)} </Text>
                 </CardItem>
                 <CardItem>
                     <Text>{this.props.transc.note}</Text>
