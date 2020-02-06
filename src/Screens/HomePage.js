@@ -314,10 +314,11 @@ class HomePage extends React.Component {
           />
         }>
         <NavigationEvents onDidFocus={this._onRefresh} />
-        <View>
+        <View style={{flex:1}}>
           <CalendarList
             style={{
               width: Dimensions.get('window').width,
+              flexGrow:1
             }}
             theme={{
               backgroundColor: '#ffffff',
@@ -588,8 +589,8 @@ const styles = StyleSheet.create({
       ios: {
         marginTop: 0,
         marginBottom: 0,
-        width: Dimensions.get('window').width / 8 - 2.7,
-        height: Dimensions.get('window').width / 8 - 4.7,
+        width: 40,
+        height: 40,
       },
       android: {
         marginTop: -12,
@@ -617,8 +618,8 @@ const styles = StyleSheet.create({
       ios: {
         marginTop: 0,
         marginBottom: 0,
-        width: Dimensions.get('window').width / 8 - 2.7,
-        height: Dimensions.get('window').width / 8 - 4.7,
+         width: 40,
+        height: 40,
       },
       android: {
         marginTop: -12,
@@ -642,8 +643,8 @@ const styles = StyleSheet.create({
       ios: {
         marginTop: 0,
         marginBottom: 0,
-        width: Dimensions.get('window').width / 8 - 2.7,
-        height: Dimensions.get('window').width / 8 - 4.7,
+         width: 40,
+        height: 40,
       },
       android: {
         marginTop: -12,
@@ -664,8 +665,8 @@ const styles = StyleSheet.create({
       ios: {
         marginTop: 0,
         marginBottom: 0,
-        width: Dimensions.get('window').width / 8 - 2.7,
-        height: Dimensions.get('window').width / 8 - 4.7,
+         width: 40,
+        height: 40,
       },
       android: {
         marginTop: -12,
@@ -689,10 +690,10 @@ const styles = StyleSheet.create({
   cardHead1: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-   
-     ...Platform.select({
+
+    ...Platform.select({
       ios: {
-       marginBottom: -10,
+        marginBottom: -10,
       },
       android: {
         marginBottom: -15,
@@ -705,12 +706,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   cardIos: {
+
     ...Platform.select({
       ios: {
         marginLeft: 10,
         marginRight: 10,
         padding: 0,
-        marginTop:20,
+        marginTop: 20,
       },
       android: {
         marginLeft: 10,

@@ -24,6 +24,7 @@ import Storage from "../Storage";
 import { bindActionCreators } from "redux";
 import { userAsync } from "../store/actions";
 import { connect } from "react-redux";
+import RNPickerSelect from 'react-native-picker-select';
 class MainScreen extends React.Component {
   static navigationOptions = {
     header: null
@@ -347,9 +348,14 @@ class MainScreen extends React.Component {
                 keyboardType="number-pad"
                 returnKeyType="next"
               />
-              <Picker
-                selectedValue={this.state.commType}
+                       
+              <RNPickerSelect
+                value={this.state.commType}
                 style={styles.pickerIos}
+                items={[
+                      { label: '%', value: '%' },
+                      { label: 'Fixed', value: 'Fixed' },
+                    ]}
                 onValueChange={(itemValue, itemIndex) =>
                   this.setState({
                     commType: itemValue,
@@ -357,10 +363,7 @@ class MainScreen extends React.Component {
                     commPer: ""
                   })
                 }
-              >
-                <Picker.Item label="%" value="%" />
-                <Picker.Item label="Fixed" value="Fixed" />
-              </Picker>
+              />
             </View>
             <View style={styles.commSection}>
               <Text style={{ fontWeight: "bold", marginRight: 10 }}>Bonus</Text>
@@ -383,9 +386,10 @@ class MainScreen extends React.Component {
                 keyboardType="number-pad"
                 returnKeyType="next"
               />
-              <Picker
+
+              <RNPickerSelect
                 style={styles.pickerIos}
-                selectedValue={this.state.bonusType}
+                value={this.state.bonusType}
                 onValueChange={(itemValue, itemIndex) =>
                   this.setState({
                     bonusType: itemValue,
@@ -393,10 +397,12 @@ class MainScreen extends React.Component {
                     bonusPer: ""
                   })
                 }
-              >
-                <Picker.Item label="%" value="%" />
-                <Picker.Item label="Fixed" value="Fixed" />
-              </Picker>
+                  items={[
+                      { label: '%', value: '%' },
+                      { label: 'Fixed', value: 'Fixed' },
+                    ]}
+              />
+
             </View>
             <View style={styles.commSection}>
               <Text>PMD</Text>
@@ -431,16 +437,18 @@ class MainScreen extends React.Component {
                 keyboardType="number-pad"
                 returnKeyType="next"
               />
-              <Picker
+
+              <RNPickerSelect
                 style={styles.pickerIos}
-                selectedValue={this.state.pmdType}
+                value={this.state.pmdType}
+                 items={[
+                      { label: '%', value: '%' },
+                      { label: 'Fixed', value: 'Fixed' },
+                    ]}
                 onValueChange={(itemValue, itemIndex) =>
                   this.setState({ pmdType: itemValue })
                 }
-              >
-                <Picker.Item label="%" value="%" />
-                <Picker.Item label="Fixed" value="Fixed" />
-              </Picker>
+             />
             </View>
           </View>
           <View>
@@ -490,14 +498,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    ...Platform.select({
-      ios: {
-        height: 150
-      },
-      android: {
-        height: 80
-      }
-    })
+    marginTop:10,
+    marginBottom:10,
   },
   saveBtn: {
     paddingTop: 10,

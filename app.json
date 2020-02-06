@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "AssurePay",
-    "slug": "assurepayfinal",
+    "slug": "assurepayiphone",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
@@ -30,6 +30,7 @@
     "android": {
       "package": "com.yourcompany.yourappname"
     },
-    "description": ""
+    "description": "",
+    "githubUrl": "https://github.com/Anjumzaki/AssurePay"
   }
 }
