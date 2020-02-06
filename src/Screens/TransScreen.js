@@ -24,7 +24,7 @@ import Storage from "../Storage";
 import { bindActionCreators } from "redux";
 import { userAsync } from "../store/actions";
 import { connect } from "react-redux";
-import RNPickerSelect from 'react-native-picker-select';
+import RNPickerSelect from "react-native-picker-select";
 class MainScreen extends React.Component {
   static navigationOptions = {
     header: null
@@ -172,7 +172,7 @@ class MainScreen extends React.Component {
           <View style={styles.SectionStyle}>
             <TextInput
               style={styles.forms}
-              value={soldDate}
+              value={this.state.soldDate.dateString}
               placeholder="Sold Date"
               keyboardType="default"
               returnKeyType="next"
@@ -348,23 +348,32 @@ class MainScreen extends React.Component {
                 keyboardType="number-pad"
                 returnKeyType="next"
               />
-                       
-              <RNPickerSelect
-                value={this.state.commType}
-                style={styles.pickerIos}
-                items={[
-                      { label: '%', value: '%' },
-                      { label: 'Fixed', value: 'Fixed' },
-                    ]}
-                onValueChange={(itemValue, itemIndex) =>
-                  this.setState({
-                    commType: itemValue,
-                    commission: "",
-                    commPer: ""
-                  })
-                }
-              />
+
+              <View
+                style={{
+                  width: 100,
+                  height: 50,
+                  textAlign: "right",
+                  justifyContent: "flex-end"
+                }}
+              >
+                <RNPickerSelect
+                  value={this.state.commType}
+                  items={[
+                    { label: "%", value: "%" },
+                    { label: "Fixed", value: "Fixed" }
+                  ]}
+                  onValueChange={(itemValue, itemIndex) =>
+                    this.setState({
+                      commType: itemValue,
+                      commission: "",
+                      commPer: ""
+                    })
+                  }
+                />
+              </View>
             </View>
+
             <View style={styles.commSection}>
               <Text style={{ fontWeight: "bold", marginRight: 10 }}>Bonus</Text>
               <Text style={{ fontSize: 22 }}>
@@ -386,23 +395,29 @@ class MainScreen extends React.Component {
                 keyboardType="number-pad"
                 returnKeyType="next"
               />
-
-              <RNPickerSelect
-                style={styles.pickerIos}
-                value={this.state.bonusType}
-                onValueChange={(itemValue, itemIndex) =>
-                  this.setState({
-                    bonusType: itemValue,
-                    bonus: "",
-                    bonusPer: ""
-                  })
-                }
+              <View
+                style={{
+                  width: 100,
+                  height: 50,
+                  textAlign: "right",
+                  justifyContent: "flex-end"
+                }}
+              >
+                <RNPickerSelect
+                  value={this.state.bonusType}
+                  onValueChange={(itemValue, itemIndex) =>
+                    this.setState({
+                      bonusType: itemValue,
+                      bonus: "",
+                      bonusPer: ""
+                    })
+                  }
                   items={[
-                      { label: '%', value: '%' },
-                      { label: 'Fixed', value: 'Fixed' },
-                    ]}
-              />
-
+                    { label: "%", value: "%" },
+                    { label: "Fixed", value: "Fixed" }
+                  ]}
+                />
+              </View>
             </View>
             <View style={styles.commSection}>
               <Text>PMD</Text>
@@ -410,7 +425,8 @@ class MainScreen extends React.Component {
                 {this.state.pmdDeduction >= 0 ? this.state.pmdDeduction : "0.0"}
               </Text>
               <TextInput
-                style={{ width: Dimensions.get("window").width - 300 }}
+                style={{ width: Dimensions.get("window").width - 220 }}
+                placeholderText={{fontSize:10}}
                 onChangeText={pmdDeductionPer => {
                   var calc;
                   if (this.state.pmdType === "%") {
@@ -437,18 +453,25 @@ class MainScreen extends React.Component {
                 keyboardType="number-pad"
                 returnKeyType="next"
               />
-
-              <RNPickerSelect
-                style={styles.pickerIos}
-                value={this.state.pmdType}
-                 items={[
-                      { label: '%', value: '%' },
-                      { label: 'Fixed', value: 'Fixed' },
-                    ]}
-                onValueChange={(itemValue, itemIndex) =>
-                  this.setState({ pmdType: itemValue })
-                }
-             />
+              <View
+                style={{
+                  width: 100,
+                  height: 50,
+                  textAlign: "right",
+                  justifyContent: "flex-end"
+                }}
+              >
+                <RNPickerSelect
+                  value={this.state.pmdType}
+                  items={[
+                    { label: "%", value: "%" },
+                    { label: "Fixed", value: "Fixed" }
+                  ]}
+                  onValueChange={(itemValue, itemIndex) =>
+                    this.setState({ pmdType: itemValue })
+                  }
+                />
+              </View>
             </View>
           </View>
           <View>
@@ -498,8 +521,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop:10,
-    marginBottom:10,
+    marginTop: 10,
+    marginBottom: 10
   },
   saveBtn: {
     paddingTop: 10,
@@ -515,10 +538,6 @@ const styles = StyleSheet.create({
     ...Platform.select({
       ios: {
         width: 60
-      },
-      android: {
-        width: 60,
-        height: 80
       }
     })
   }
