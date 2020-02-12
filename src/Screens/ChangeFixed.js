@@ -142,7 +142,7 @@ class ChangeFixed extends React.Component {
                     <View>
                     
                         <View style={styles.commSection}>
-                            <Text style={{ fontWeight: 'bold', marginRight: 10 }} >Commision</Text>
+                            <Text style={{ fontWeight: 'bold', marginRight: 10 }} >Commission</Text>
                             <View style={styles.dropUpText}>
                                 <TextInput
                                     style={{ width: 100, padding: 5 }}
@@ -150,7 +150,7 @@ class ChangeFixed extends React.Component {
                                         this.setState({ commission })
                                     }}
                                     value={this.state.commission}
-                                    placeholder="Commision "
+                                    placeholder="Commission "
                                     keyboardType="number-pad"
                                     returnKeyType="next"
                                 />

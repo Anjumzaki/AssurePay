@@ -412,7 +412,7 @@ class HomePage extends React.Component {
                         <Text style={{ textAlign: 'center', color: 'black' }}>
                           {date.day}
                         </Text>
-                        <View>
+                        <View style={{flexDirection:'row',justifyContent:'center'}}>
                           <Feather
                             style={styles.myIcons1}
                             name="dollar-sign"
@@ -631,7 +631,6 @@ const styles = StyleSheet.create({
   },
   both: {
     padding: 5,
-    flexDirection: 'row',
     backgroundColor: 'yellow',
     borderWidth: 0.5,
     borderColor: 'silver',

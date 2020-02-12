@@ -444,7 +444,7 @@ class YearlyGoal extends React.Component {
               </CardItem>
               <CardItem style={styles.cardHead1}>
                 <View style={{ flexDirection: 'row' }}>
-                  <Text style={styles.head}>Total Commisions </Text>
+                  <Text style={styles.head}>Total Commissions </Text>
                   <Text style={styles.head1}>
                     $
                     {totalCommission

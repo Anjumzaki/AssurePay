@@ -321,7 +321,7 @@ class MainScreen extends React.Component {
           <View>
             <View style={styles.commSection}>
               <Text style={{ fontWeight: "bold", marginRight: 10 }}>
-                Commision
+                Commission
               </Text>
               <Text style={{ fontSize: 22 }}>
                 {this.state.commission >= 0
@@ -344,7 +344,7 @@ class MainScreen extends React.Component {
                   });
                 }}
                 value={Math.round(this.state.commPer)}
-                placeholder="Commision "
+                placeholder="Commission "
                 keyboardType="number-pad"
                 returnKeyType="next"
               />
@@ -422,11 +422,11 @@ class MainScreen extends React.Component {
             <View style={styles.commSection}>
               <Text>PMD</Text>
               <Text>
-                {this.state.pmdDeduction >= 0 ? this.state.pmdDeduction : "0.0"}
+                {this.state.pmdDeduction >= 0 ? this.state.pmdDeduction : "0.0 $"}
               </Text>
               <TextInput
-                style={{ width: Dimensions.get("window").width - 220 }}
-                placeholderText={{fontSize:10}}
+                style={{ width: Dimensions.get("window").width - 220,textAlign:'center' }}
+                placeholderText={{ fontSize: 10 }}
                 onChangeText={pmdDeductionPer => {
                   var calc;
                   if (this.state.pmdType === "%") {
@@ -453,6 +453,7 @@ class MainScreen extends React.Component {
                 keyboardType="number-pad"
                 returnKeyType="next"
               />
+              
               <View
                 style={{
                   width: 100,
